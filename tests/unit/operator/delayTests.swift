@@ -37,6 +37,24 @@ class delayTests: XCTestCase {
     subscription.unsubscribe()
   }
 
+  func testValueIsDelayedUsingDispatchTimeInterval() {
+    let property = createProperty()
+    
+    var hasReceived = false
+    let didReceiveValue = expectation(description: "Did receive value")
+    let subscription = property.delay(by: .milliseconds(500)).subscribeToValue { value in
+      XCTAssertEqual(value, 0)
+      didReceiveValue.fulfill()
+      hasReceived = true
+    }
+    
+    XCTAssertFalse(hasReceived)
+    
+    waitForExpectations(timeout: 0.5)
+    
+    subscription.unsubscribe()
+  }
+  
   func testValueIsNotReceivedWithoutSubscription() {
     let property = createProperty()
 

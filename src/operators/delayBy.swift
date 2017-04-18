@@ -42,4 +42,12 @@ extension MotionObservableConvertible {
       }
     }
   }
+
+  /**
+   Emits values from upstream after the specified delay.
+   */
+  public func delay(by duration: DispatchTimeInterval) -> MotionObservable<T> {
+    let durationInSeconds = duration.toSeconds()
+    return self.delay(by: durationInSeconds)
+  }
 }

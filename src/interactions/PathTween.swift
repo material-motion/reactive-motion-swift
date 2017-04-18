@@ -69,6 +69,14 @@ public final class PathTween: Interaction, Togglable, Stateful {
   }
 
   /**
+   Initializes a path tween instance with its required properties.
+   */
+  convenience public init(duration: DispatchTimeInterval, path: CGPath, system: @escaping PathTweenToStream<CGPoint> = coreAnimation, timeline: Timeline? = nil) {
+    let durationInSeconds = duration.toSeconds()
+    self.init(duration: durationInSeconds, path: path, system: system, timeline: timeline)
+  }
+
+  /**
    Initializes a path tween instance with a default duration of 0 and an empty path.
 
    The duration and path should be modified after initialization in order to configure the

@@ -102,6 +102,14 @@ public class Tween<T>: Interaction, Togglable, Stateful {
     self.timeline = timeline
   }
 
+  /**
+   Initializes a tween instance with its required properties.
+   */
+  convenience public init(duration: DispatchTimeInterval, values: [T], system: @escaping TweenToStream<T> = coreAnimation, timeline: Timeline? = nil) {
+    let durationInSeconds = duration.toSeconds()
+    self.init(duration: durationInSeconds, values: values, system: system, timeline: timeline)
+  }
+
   public func add(to property: ReactiveProperty<T>,
                   withRuntime runtime: MotionRuntime,
                   constraints applyConstraints: ConstraintApplicator<T>? = nil) {
