@@ -69,14 +69,49 @@ public final class TransitionController {
   }
 
   /**
-   Gesture recognizers associated with a view controller dismisser will cause the associated view
-   controller to be dismissed when the gesture recognizers begin.
+   Start a dismiss transition when the given gesture recognizer enters its began or recognized
+   state.
 
-   Provided gesture recognizers will also be made available to the Transition instance via the
-   TransitionContext's gestureRecognizers property.
+   The provided gesture recognizer will be made available to the transition instance via the
+   TransitionContext's `gestureRecognizers` property.
    */
-  public var dismisser: ViewControllerDismisser {
-    return _transitioningDelegate.dismisser
+  public func dismissWhenGestureRecognizerBegins(_ gestureRecognizer: UIGestureRecognizer) {
+    _transitioningDelegate.dismisser.dismissWhenGestureRecognizerBegins(gestureRecognizer)
+  }
+
+  /**
+   Will not allow the provided gesture recognizer to recognize simultaneously with other gesture
+   recognizers.
+
+   This method assumes that the provided gesture recognizer's delegate has been assigned to the
+   transition controller's gesture delegate.
+   */
+  public func disableSimultaneousRecognition(of gestureRecognizer: UIGestureRecognizer) {
+    _transitioningDelegate.dismisser.disableSimultaneousRecognition(of: gestureRecognizer)
+  }
+
+  /**
+   Returns a gesture recognizer delegate that will allow the gesture recognizer to begin only if the
+   provided scroll view is scrolled to the top of its content.
+
+   The returned delegate implements gestureRecognizerShouldBegin.
+   */
+  public func topEdgeDismisserDelegate(for scrollView: UIScrollView) -> UIGestureRecognizerDelegate {
+    return _transitioningDelegate.dismisser.topEdgeDismisserDelegate(for: scrollView)
+  }
+
+  /**
+   The set of gesture recognizers that will be provided to the transition via the TransitionContext
+   instance.
+   */
+  public var gestureRecognizers: Set<UIGestureRecognizer> {
+    set { _transitioningDelegate.gestureDelegate.gestureRecognizers = newValue }
+    get { return _transitioningDelegate.gestureDelegate.gestureRecognizers }
+  }
+
+  public var foreAlignmentEdge: CGRectEdge? {
+    set { _transitioningDelegate.foreAlignmentEdge = newValue }
+    get { return _transitioningDelegate.foreAlignmentEdge }
   }
 
   /**
@@ -89,8 +124,23 @@ public final class TransitionController {
     return _transitioningDelegate
   }
 
+  /**
+   The gesture recognizer delegate managed by this controller.
+   */
+  public var gestureDelegate: UIGestureRecognizerDelegate {
+    return _transitioningDelegate.gestureDelegate
+  }
+
   init(viewController: UIViewController) {
     _transitioningDelegate = TransitioningDelegate(viewController: viewController)
+  }
+
+  /**
+   Deprecated. Please use methods directly on the transitionController instead.
+   */
+  @available(*, deprecated, message: "Please use methods directly on the transitionController instead.")
+  public var dismisser: ViewControllerDismisser {
+    return _transitioningDelegate.dismisser
   }
 
   fileprivate let _transitioningDelegate: TransitioningDelegate
@@ -100,16 +150,19 @@ private final class TransitioningDelegate: NSObject, UIViewControllerTransitioni
   init(viewController: UIViewController) {
     self.associatedViewController = viewController
 
-    self.dismisser = ViewControllerDismisser()
+    self.dismisser = ViewControllerDismisser(gestureDelegate: self.gestureDelegate)
 
     super.init()
 
     self.dismisser.delegate = self
   }
 
+  var foreAlignmentEdge: CGRectEdge?
   var ctx: TransitionContext?
   var transitionType: Transition.Type?
+
   let dismisser: ViewControllerDismisser
+  let gestureDelegate = GestureDelegate()
 
   weak var associatedViewController: UIViewController?
 
@@ -133,7 +186,8 @@ private final class TransitioningDelegate: NSObject, UIViewControllerTransitioni
                               direction: direction,
                               back: back,
                               fore: fore,
-                              dismisser: dismisser)
+                              gestureRecognizers: gestureDelegate.gestureRecognizers,
+                              foreAlignmentEdge: foreAlignmentEdge)
       ctx?.delegate = self
     }
   }

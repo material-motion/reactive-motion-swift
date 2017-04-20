@@ -46,7 +46,7 @@ class ModalDialogViewController: UIViewController {
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
 
     transitionController.transitionType = ModalDialogTransition.self
-
+    preferredContentSize = .init(width: 200, height: 200)
     modalPresentationStyle = .overCurrentContext
   }
 
@@ -64,8 +64,6 @@ class ModalDialogViewController: UIViewController {
     view.layer.shadowRadius = 5
     view.layer.shadowOpacity = 1
     view.layer.shadowOffset = .init(width: 0, height: 2)
-
-    preferredContentSize = .init(width: 200, height: 200)
   }
 }
 
@@ -74,15 +72,10 @@ class ModalDialogTransition: SelfDismissingTransition {
   required init() {}
 
   func willBeginTransition(withContext ctx: TransitionContext, runtime: MotionRuntime) -> [Stateful] {
-    let size = ctx.fore.preferredContentSize
-
-    if ctx.direction == .forward {
-      ctx.fore.view.bounds = CGRect(origin: .zero, size: size)
-    }
-
+    let size = ctx.fore.view.frame.size
     let bounds = ctx.containerView().bounds
     let backPosition = CGPoint(x: bounds.midX, y: bounds.maxY + size.height * 3 / 4)
-    let forePosition = CGPoint(x: bounds.midX, y: bounds.midY)
+    let forePosition = ctx.fore.view.layer.position
 
     let reactiveForeLayer = runtime.get(ctx.fore.view.layer)
     let position = reactiveForeLayer.position

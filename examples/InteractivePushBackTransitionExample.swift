@@ -59,8 +59,8 @@ private class ModalViewController: UIViewController, UIGestureRecognizerDelegate
     view.addSubview(scrollView)
 
     let pan = UIPanGestureRecognizer()
-    pan.delegate = transitionController.dismisser.topEdgeDismisserDelegate(for: scrollView)
-    transitionController.dismisser.dismissWhenGestureRecognizerBegins(pan)
+    pan.delegate = transitionController.topEdgeDismisserDelegate(for: scrollView)
+    transitionController.dismissWhenGestureRecognizerBegins(pan)
     scrollView.panGestureRecognizer.require(toFail: pan)
     view.addGestureRecognizer(pan)
   }

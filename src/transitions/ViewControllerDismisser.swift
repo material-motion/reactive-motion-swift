@@ -74,10 +74,15 @@ public final class ViewControllerDismisser {
   weak var delegate: ViewControllerDismisserDelegate?
 
   public var gestureRecognizers: Set<UIGestureRecognizer> {
-    return gestureDelegate.gestureRecognizers
+    set { gestureDelegate.gestureRecognizers = newValue }
+    get { return gestureDelegate.gestureRecognizers }
   }
 
-  private var gestureDelegate = GestureDelegate()
+  init(gestureDelegate: GestureDelegate) {
+    self.gestureDelegate = gestureDelegate
+  }
+
+  private var gestureDelegate: GestureDelegate
   private var scrollViewTopEdgeDismisserDelegates: [ScrollViewTopEdgeDismisserDelegate] = []
 }
 
@@ -93,9 +98,9 @@ private final class ScrollViewTopEdgeDismisserDelegate: NSObject, UIGestureRecog
   weak var scrollView: UIScrollView?
 }
 
-private final class GestureDelegate: NSObject, UIGestureRecognizerDelegate {
-  fileprivate var gestureRecognizers = Set<UIGestureRecognizer>()
-  fileprivate var soloGestureRecognizers = Set<UIGestureRecognizer>()
+final class GestureDelegate: NSObject, UIGestureRecognizerDelegate {
+  var gestureRecognizers = Set<UIGestureRecognizer>()
+  var soloGestureRecognizers = Set<UIGestureRecognizer>()
 
   public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
     if soloGestureRecognizers.contains(gestureRecognizer) || soloGestureRecognizers.contains(otherGestureRecognizer) {

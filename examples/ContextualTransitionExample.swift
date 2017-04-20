@@ -202,11 +202,10 @@ class PhotoAlbumViewController: UIViewController, UICollectionViewDataSource, UI
 
     view.addSubview(collectionView)
 
-    let dismisser = transitionController.dismisser
-    dismisser.disableSimultaneousRecognition(of: collectionView.panGestureRecognizer)
+    transitionController.disableSimultaneousRecognition(of: collectionView.panGestureRecognizer)
 
     for gesture in [UIPanGestureRecognizer(), UIPinchGestureRecognizer(), UIRotationGestureRecognizer()] {
-      dismisser.dismissWhenGestureRecognizerBegins(gesture)
+      transitionController.dismissWhenGestureRecognizerBegins(gesture)
       view.addGestureRecognizer(gesture)
     }
   }
