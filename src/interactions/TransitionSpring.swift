@@ -61,7 +61,7 @@ public let defaultTransitionSpringSuggestedDuration: CGFloat = 0.5
 
  T-value constraints may be applied to this interaction.
  */
-public final class TransitionSpring<T>: Spring<T> where T: Zeroable, T: Subtractable {
+public final class TransitionSpring<T>: Spring<T> where T: ZeroableAndSubtractable {
 
   /**
    The destination when the transition is moving backward.

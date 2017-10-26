@@ -20,6 +20,21 @@ import CoreGraphics
 extension DispatchTimeInterval {
   func toSeconds() -> CGFloat {
     let seconds: CGFloat
+
+#if swift(>=3.2)
+    switch self {
+    case let .seconds(arg):
+      seconds = CGFloat(arg)
+    case let .milliseconds(arg):
+      seconds = CGFloat(arg) / 1000.0
+    case let .microseconds(arg):
+      seconds = CGFloat(arg) / 1000000.0
+    case let .nanoseconds(arg):
+      seconds = CGFloat(arg) / 1000000000.0
+    case .never:
+      seconds = CGFloat.infinity
+    }
+#else
     switch self {
     case let .seconds(arg):
       seconds = CGFloat(arg)
@@ -30,6 +45,7 @@ extension DispatchTimeInterval {
     case let .nanoseconds(arg):
       seconds = CGFloat(arg) / 1000000000.0
     }
+#endif
     return seconds
   }
 }
