@@ -21,6 +21,23 @@ extension DispatchTimeInterval {
   func toSeconds() -> CGFloat {
     let seconds: CGFloat
 
+    // `.never` was introduced in the latest SDK. In order to support both Xcode 8 and 9 we have to
+    // implement the `case .never` while not implementing it on Xcode 8. Unfortunately, `#if swift`
+    // statements placed inside of switch statements can't build, so we're stuck duplicating the
+    // switch statement.
+    //
+    // If we try to write the code like so:
+    //
+    //     #if swift(>=3.2)
+    //       case .never:
+    //       seconds = CGFloat.infinity
+    //     #endif
+    //
+    // We get the following errors:
+    //
+    //     Extraneous '.' in enum 'case' declaration
+    //     'case' label can only appear inside a 'switch' statement
+
 #if swift(>=3.2)
     switch self {
     case let .seconds(arg):
