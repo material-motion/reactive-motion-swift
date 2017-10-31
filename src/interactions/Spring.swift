@@ -45,7 +45,7 @@ public let defaultSpringMass: CGFloat = 1
 
  T-value constraints may be applied to this interaction.
  */
-public class Spring<T>: Interaction, Togglable, Stateful where T: Zeroable, T: Subtractable {
+public class Spring<T>: Interaction, Togglable, Stateful where T: ZeroableAndSubtractable {
   /**
    Creates a spring with a given threshold and system.
 
@@ -138,7 +138,7 @@ public class Spring<T>: Interaction, Togglable, Stateful where T: Zeroable, T: S
   private var activeSprings = Set<SpringShadow<T>>()
 }
 
-public struct SpringShadow<T>: Hashable where T: Zeroable, T: Subtractable {
+public struct SpringShadow<T>: Hashable where T: ZeroableAndSubtractable {
   public let enabled: ReactiveProperty<Bool>
   public let state = createProperty(withInitialValue: MotionState.atRest)
   public let initialValue: ReactiveProperty<T>
