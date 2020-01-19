@@ -20,7 +20,7 @@ import UIKit
 // This is a simulator-only API for detecting simulator slow-motion animations being enabled.
 // simulatorDragCoefficient() returns a value that is greater than 1 when slow-motion is enabled.
 
-#if (arch(i386) || arch(x86_64)) && os(iOS)
+#if targetEnvironment(simulator)
   @_silgen_name("UIAnimationDragCoefficient") func UIAnimationDragCoefficient() -> Float
   public func simulatorDragCoefficient() -> CGFloat {
     return CGFloat(UIAnimationDragCoefficient())

@@ -49,7 +49,7 @@ private final class SliderConnection: NSObject {
     slider = nil
   }
 
-  func sliderDidChange() {
+    @objc func sliderDidChange() {
     if let slider = slider {
       observer.next(CGFloat(slider.value))
     }

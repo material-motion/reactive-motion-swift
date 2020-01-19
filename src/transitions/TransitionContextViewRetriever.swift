@@ -34,7 +34,7 @@ public func transitionContextViewRetriever(for viewController: UIViewController)
   }
 
   // Haven't found the view retriever yet, let's search the children.
-  var queue = viewController.childViewControllers
+    var queue = viewController.children
 
   while let childViewController = queue.first {
     if let retriever = childViewController as? TransitionContextViewRetriever {
@@ -52,7 +52,7 @@ public func transitionContextViewRetriever(for viewController: UIViewController)
         fallthrough
       }
     default:
-      childViewControllers = childViewController.childViewControllers
+        childViewControllers = childViewController.children
     }
 
     queue.append(contentsOf: childViewControllers)

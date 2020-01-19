@@ -90,7 +90,7 @@ public final class MotionRuntime {
     guard let interactions = targets[ObjectIdentifier(target)] else {
       return []
     }
-    return interactions.flatMap { $0 as? I }
+    return interactions.compactMap { $0 as? I }
   }
 
   /**
