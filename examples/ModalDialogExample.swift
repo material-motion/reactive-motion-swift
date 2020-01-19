@@ -25,7 +25,7 @@ class ModalDialogExampleViewController: ExampleViewController {
     view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTap)))
   }
 
-  func didTap() {
+    @objc func didTap() {
     let vc = ModalDialogViewController()
     present(vc, animated: true)
   }

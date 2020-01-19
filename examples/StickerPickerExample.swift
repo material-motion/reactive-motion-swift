@@ -43,7 +43,7 @@ class StickerPickerExampleViewController: ExampleViewController, StickerListView
     runtime.add(DirectlyManipulable(), to: stickerView)
   }
 
-  func didTapAdd() {
+    @objc func didTapAdd() {
     let picker = StickerListViewController()
     picker.delegate = self
     present(picker, animated: true)

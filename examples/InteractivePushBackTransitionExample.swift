@@ -25,7 +25,7 @@ class InteractivePushBackTransitionExampleViewController: ExampleViewController 
     view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTap)))
   }
 
-  func didTap() {
+    @objc func didTap() {
     let vc = ModalViewController()
     present(vc, animated: true)
   }

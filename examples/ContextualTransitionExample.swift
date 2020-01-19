@@ -221,7 +221,7 @@ class PhotoAlbumViewController: UIViewController, UICollectionViewDataSource, UI
 
     navigationController?.setNavigationBarHidden(true, animated: animated)
 
-    let photoIndex = album.photos.index { $0.image == currentPhoto.image }!
+    let photoIndex = album.photos.firstIndex { $0.image == currentPhoto.image }!
     let indexPath = IndexPath(item: photoIndex, section: 0)
     collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
   }
