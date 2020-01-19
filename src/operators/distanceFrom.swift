@@ -24,7 +24,7 @@ extension MotionObservableConvertible where T == CGFloat {
    */
   public func distance(from location: CGFloat) -> MotionObservable<CGFloat> {
     return _map {
-      fabs($0 - location)
+        abs($0 - location)
     }
   }
 }

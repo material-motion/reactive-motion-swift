@@ -67,7 +67,7 @@ private func streamFromTween<T>(_ tween: TweenShadow<T>, configureEvent: @escapi
       }
       animation.beginTime = CFTimeInterval(tween.delay.value)
       if tween.delay.value > 0 {
-        animation.fillMode = kCAFillModeBackwards
+        animation.fillMode = CAMediaTimingFillMode.backwards
       }
       animation.duration = CFTimeInterval(duration)
       animation.repeatCount = Float(tween.repeatCount.value)

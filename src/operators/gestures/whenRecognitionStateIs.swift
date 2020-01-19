@@ -20,14 +20,14 @@ import UIKit
 extension MotionObservableConvertible where T: UIGestureRecognizer {
 
   /** Only forwards the gesture recognizer if its state matches the provided value. */
-  public func whenRecognitionState(is state: UIGestureRecognizerState) -> MotionObservable<T> {
+    public func whenRecognitionState(is state: UIGestureRecognizer.State) -> MotionObservable<T> {
     return _filter { value in
       return value.state == state
     }
   }
 
   /** Only forwards the gesture recognizer if its state matches any of the provided values. */
-  public func whenRecognitionState(isAnyOf states: [UIGestureRecognizerState]) -> MotionObservable<T> {
+    public func whenRecognitionState(isAnyOf states: [UIGestureRecognizer.State]) -> MotionObservable<T> {
     return _filter { value in
       return states.contains(value.state)
     }

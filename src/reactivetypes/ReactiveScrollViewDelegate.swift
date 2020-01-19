@@ -44,7 +44,7 @@ public final class ReactiveScrollViewDelegate: NSObject, UIScrollViewDelegate, M
     return MotionObservable { observer in
       self.didScrollObservers.append(observer)
       return {
-        if let index = self.didScrollObservers.index(where: { $0 === observer }) {
+        if let index = self.didScrollObservers.firstIndex(where: { $0 === observer }) {
           self.didScrollObservers.remove(at: index)
         }
       }
