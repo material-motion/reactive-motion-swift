@@ -50,6 +50,8 @@ extension DispatchTimeInterval {
       seconds = CGFloat(arg) / 1000000000.0
     case .never:
       seconds = CGFloat.infinity
+    @unknown default:
+        fatalError()
     }
 #else
     switch self {

@@ -69,7 +69,7 @@ extension MotionObservableConvertible {
       }
 
       return {
-        if let index = observers.index(where: { $0 === observer }) {
+        if let index = observers.firstIndex(where: { $0 === observer }) {
           observers.remove(at: index)
           if observers.count == 0 {
             subscription?.unsubscribe()

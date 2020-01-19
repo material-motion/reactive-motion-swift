@@ -74,7 +74,7 @@ public final class DirectlyManipulable: NSObject, Interaction, Togglable, Statef
     runtime.connect(enabled, to: scalable.enabled)
 
     let gestures: [UIGestureRecognizer?] = [rotatable.nextGestureRecognizer, scalable.nextGestureRecognizer]
-    let anchorPointRecognizers = gestures.flatMap { $0 }
+    let anchorPointRecognizers = gestures.compactMap { $0 }
     let adjustsAnchorPoint = AdjustsAnchorPoint(gestureRecognizers: anchorPointRecognizers)
     runtime.add(adjustsAnchorPoint, to: view)
 

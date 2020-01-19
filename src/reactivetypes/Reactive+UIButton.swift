@@ -39,17 +39,17 @@ public final class ReactiveButtonTarget: NSObject {
     return MotionObservable { observer in
       self.didHighlightObservers.append(observer)
       return {
-        if let index = self.didHighlightObservers.index(where: { $0 === observer }) {
+        if let index = self.didHighlightObservers.firstIndex(where: { $0 === observer }) {
           self.didHighlightObservers.remove(at: index)
         }
       }
     }
   }
 
-  func didEnterEvent(_ button: UIButton) {
+    @objc func didEnterEvent(_ button: UIButton) {
     didHighlightObservers.forEach { $0.next(true) }
   }
-  func didExitEvent(_ button: UIButton) {
+    @objc func didExitEvent(_ button: UIButton) {
     didHighlightObservers.forEach { $0.next(false) }
   }
   private var didHighlightObservers: [MotionObserver<Bool>] = []

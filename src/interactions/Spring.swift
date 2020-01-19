@@ -167,6 +167,10 @@ public struct SpringShadow<T>: Hashable where T: ZeroableAndSubtractable {
     return uuid.hashValue
   }
 
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.hashValue)
+    }
+    
   public static func ==(lhs: SpringShadow<T>, rhs: SpringShadow<T>) -> Bool {
     return lhs.uuid == rhs.uuid
   }

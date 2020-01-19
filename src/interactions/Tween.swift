@@ -95,7 +95,7 @@ public class Tween<T>: Interaction, Togglable, Stateful {
    See CAKeyframeAnimation documentation for more details.
    */
   public let timingFunctions = createProperty(withInitialValue:
-    [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)]
+    [CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)]
   )
 
   /**

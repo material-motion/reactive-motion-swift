@@ -162,7 +162,7 @@ extension ReactiveProperty: MotionObservableConvertible {
       observer.next(self.value)
 
       return {
-        if let index = self.observers.index(where: { $0 === observer }) {
+        if let index = self.observers.firstIndex(where: { $0 === observer }) {
           self.observers.remove(at: index)
         }
       }
