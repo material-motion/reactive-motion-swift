@@ -73,11 +73,11 @@ class TimelineView: UIView {
     return .init(width: size.width, height: 84)
   }
 
-  func didSlide(_ slider: UISlider) {
+    @objc func didSlide(_ slider: UISlider) {
     delegate?.timelineView(self, didChangeSliderValue: CGFloat(slider.value))
   }
 
-  func didToggle(_ button: UIButton) {
+    @objc func didToggle(_ button: UIButton) {
     delegate?.timelineViewDidTogglePause(self)
   }
 

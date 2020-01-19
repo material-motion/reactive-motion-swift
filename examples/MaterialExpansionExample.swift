@@ -59,7 +59,7 @@ class MaterialExpansionExampleViewController: ExampleViewController {
                                           system: coreAnimation)
 
     let floodExpansion = Tween<CGFloat>(duration: 0.375, values: [0, 1])
-    floodExpansion.timingFunctions.value = [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)]
+    floodExpansion.timingFunctions.value = [CAMediaTimingFunction(name: .easeOut)]
     let fadeOut = Tween<CGFloat>(duration: 0.375, values: [0.75, 0])
     fadeOut.offsets.value = [0.2, 1]
 

@@ -19,81 +19,81 @@
 import Foundation
 
 extension CarouselExampleViewController {
-  class func catalogBreadcrumbs() -> [String] { return ["Case studies", "Carousel"] }
+  @objc class func catalogBreadcrumbs() -> [String] { return ["Case studies", "Carousel"] }
 }
 
 extension ContextualTransitionExampleViewController {
-  class func catalogBreadcrumbs() -> [String] { return ["Case studies", "Contextual transition"] }
+  @objc class func catalogBreadcrumbs() -> [String] { return ["Case studies", "Contextual transition"] }
 }
 
 extension FabTransitionExampleViewController {
-  class func catalogBreadcrumbs() -> [String] { return ["Case studies", "FAB transition"] }
+  @objc class func catalogBreadcrumbs() -> [String] { return ["Case studies", "FAB transition"] }
 }
 
 extension MaterialExpansionExampleViewController {
-  class func catalogBreadcrumbs() -> [String] { return ["Case studies", "Material expansion"] }
+  @objc class func catalogBreadcrumbs() -> [String] { return ["Case studies", "Material expansion"] }
 }
 
 extension ModalDialogExampleViewController {
-  class func catalogBreadcrumbs() -> [String] { return ["Case studies", "Modal dialog"] }
+  @objc class func catalogBreadcrumbs() -> [String] { return ["Case studies", "Modal dialog"] }
 }
 
 extension PushBackTransitionExampleViewController {
-  class func catalogBreadcrumbs() -> [String] { return ["Case studies", "Push back transition"] }
+  @objc class func catalogBreadcrumbs() -> [String] { return ["Case studies", "Push back transition"] }
 }
 
 extension InteractivePushBackTransitionExampleViewController {
-  class func catalogBreadcrumbs() -> [String] { return ["Case studies", "Push back transition (interactive)"] }
+  @objc class func catalogBreadcrumbs() -> [String] { return ["Case studies", "Push back transition (interactive)"] }
 }
 
 extension StickerPickerExampleViewController {
-  class func catalogBreadcrumbs() -> [String] { return ["Case studies", "Sticker picker"] }
+  @objc class func catalogBreadcrumbs() -> [String] { return ["Case studies", "Sticker picker"] }
 }
 
 extension HowToUseReactiveConstraintsExampleViewController {
-  class func catalogBreadcrumbs() -> [String] { return ["How to...", "Use reactive constraints"] }
+  @objc class func catalogBreadcrumbs() -> [String] { return ["How to...", "Use reactive constraints"] }
 }
 
 extension HowToMakeACustomOperatorExampleViewController {
-  class func catalogBreadcrumbs() -> [String] { return ["How to...", "Make a custom operator"] }
+  @objc class func catalogBreadcrumbs() -> [String] { return ["How to...", "Make a custom operator"] }
 }
 
 extension ArcMoveExampleViewController {
-  class func catalogBreadcrumbs() -> [String] { return ["Interactions", "Arc move"] }
+  @objc class func catalogBreadcrumbs() -> [String] { return ["Interactions", "Arc move"] }
 }
 
 extension ChangeDirectionOnReleaseExampleViewController {
-  class func catalogBreadcrumbs() -> [String] { return ["Interactions", "Change direction on release"] }
+  @objc class func catalogBreadcrumbs() -> [String] { return ["Interactions", "Change direction on release"] }
 }
 
 extension DirectlyManipulableExampleViewController {
-  class func catalogBreadcrumbs() -> [String] { return ["Interactions", "Directly manipulable"] }
+  @objc class func catalogBreadcrumbs() -> [String] { return ["Interactions", "Directly manipulable"] }
 }
 
 extension DraggableExampleViewController {
-  class func catalogBreadcrumbs() -> [String] { return ["Interactions", "Draggable"] }
+  @objc class func catalogBreadcrumbs() -> [String] { return ["Interactions", "Draggable"] }
 }
 
 extension RotatableExampleViewController {
-  class func catalogBreadcrumbs() -> [String] { return ["Interactions", "Rotatable"] }
+  @objc class func catalogBreadcrumbs() -> [String] { return ["Interactions", "Rotatable"] }
 }
 
 extension ScalableExampleViewController {
-  class func catalogBreadcrumbs() -> [String] { return ["Interactions", "Scalable"] }
+  @objc class func catalogBreadcrumbs() -> [String] { return ["Interactions", "Scalable"] }
 }
 
 extension SetPositionOnTapExampleViewController {
-  class func catalogBreadcrumbs() -> [String] { return ["Interactions", "Set position on tap"] }
+  @objc class func catalogBreadcrumbs() -> [String] { return ["Interactions", "Set position on tap"] }
 }
 
 extension SpringExampleViewController {
-  class func catalogBreadcrumbs() -> [String] { return ["Interactions", "Spring"] }
+  @objc class func catalogBreadcrumbs() -> [String] { return ["Interactions", "Spring"] }
 }
 
 extension TweenExampleViewController {
-  class func catalogBreadcrumbs() -> [String] { return ["Interactions", "Tween"] }
+  @objc class func catalogBreadcrumbs() -> [String] { return ["Interactions", "Tween"] }
 }
 
 extension TossableExampleViewController {
-  class func catalogBreadcrumbs() -> [String] { return ["Interactions", "Tossable"] }
+  @objc class func catalogBreadcrumbs() -> [String] { return ["Interactions", "Tossable"] }
 }

@@ -27,7 +27,7 @@ class FabTransitionExampleViewController: ExampleViewController, TransitionConte
     actionButton.backgroundColor = .primaryColor
     actionButton.bounds = .init(x: 0, y: 0, width: 50, height: 50)
     actionButton.layer.cornerRadius = actionButton.bounds.width / 2
-    actionButton.layer.position = .init(x: view.bounds.width - actionButton.bounds.width / 2 - 24,
+    actionButton.layer.position = CGPoint(x: view.bounds.width - actionButton.bounds.width / 2 - 24,
                                         y: view.bounds.height - actionButton.bounds.height / 2 - 24)
     actionButton.autoresizingMask = [.flexibleLeftMargin, .flexibleTopMargin]
     actionButton.layer.shadowOpacity = 0.5
@@ -39,7 +39,7 @@ class FabTransitionExampleViewController: ExampleViewController, TransitionConte
     actionButton.addTarget(self, action: #selector(didTap), for: .touchUpInside)
   }
 
-  func didTap() {
+    @objc func didTap() {
     let vc = ModalViewController()
     vc.transitionController.transition = CircularRevealTransition()
     present(vc, animated: true)
@@ -69,7 +69,7 @@ private class ModalViewController: UIViewController {
     view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTap)))
   }
 
-  func didTap() {
+    @objc func didTap() {
     dismiss(animated: true)
   }
 }
